@@ -1,9 +1,9 @@
 import type { Metadata, Site, Socials } from "@types";
 
 export const SITE: Site = {
-  TITLE: "ToolTrace blog",
+  TITLE: "Parango Blog",
   DESCRIPTION:
-    "En ToolTrace, registro mis aprendizajes y pruebas de nuevas herramientas y códigos, compartiendo mi progreso en el mundo del desarrollo.",
+    "En Parango Blog, registro mis aprendizajes y pruebas de nuevas herramientas y códigos, compartiendo mi progreso en el mundo del desarrollo.",
   EMAIL: "pabloarangobte@gmail.com",
   NUM_POSTS_ON_HOMEPAGE: 5,
   NUM_PROJECTS_ON_HOMEPAGE: 3,
