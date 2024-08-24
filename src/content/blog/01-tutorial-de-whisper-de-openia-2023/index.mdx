@@ -1,0 +1,142 @@
+---
+title: "Whisper AI de OpenAI: Guía práctica"
+description: "Domina Whisper AI de OpenAI con este tutorial. Aprende sobre sus características y uso en diversas aplicaciones."
+date: "2023-12-02"
+draft: false
+---
+
+import { Image } from "astro:assets";
+import Callout from "@/components/Callout.astro";
+import image1 from "./image1.webp";
+import image2 from "./image2.webp";
+import image3 from "./image3.webp";
+import image4 from "./image4.webp";
+import image5 from "./image5.webp";
+
+## Introducción
+
+Whisper AI es una inteligencia artificial especializada en el procesamiento de lenguaje natural. A diferencia de las inteligencias artificiales convencionales, Whisper AI emplea técnicas avanzadas de aprendizaje profundo y redes neuronales para entender y procesar el lenguaje humano con mayor precisión. Su habilidad para analizar y responder al lenguaje se fundamenta en una comprensión profunda del contexto, la intención y los matices del habla, lo que lo hace extremadamente útil en diversas aplicaciones prácticas.
+
+Por ejemplo, en el ámbito médico, Whisper AI puede interpretar rápidamente historiales clínicos y notas de voz, asistiendo eficazmente en los diagnósticos. En el sector educativo, adapta y personaliza los métodos de enseñanza para satisfacer las necesidades individuales de los estudiantes.
+
+Además, su capacidad para procesar y comprender múltiples idiomas y dialectos lo convierte en una herramienta invaluable para la comunicación global. Whisper AI representa un avance significativo en la interacción entre humanos y máquinas, abriendo un mundo de posibilidades en numerosos campos.
+
+## Creación del entorno de trabajo
+
+Inicialmente debemos activar un entorno de [Google Colab](https://colab.research.google.com/), simplemente para tener un entorno de ejecución de nuestro sistema.
+
+- [Google colab](https://colab.research.google.com/)
+- [GitHub de Whisper](https://github.com/openai/whisper)
+
+Si todo ha salido bien deberías tener un entono como similar al siguiente:
+
+<Image src={image1} alt="Imagen de la consola de Google Colab" />
+
+## Instalación de librerías herramientas
+
+Para llevar a cabo este tutorial, es necesario instalar las librerías básicas. Cada fragmento de código que se muestra a continuación debe ejecutarse en celdas de código separadas, por motivos prácticos y para facilitar el seguimiento del tutorial. Al final, te mostraré cómo debería verse el resultado.
+
+Inicialmente se debe descargar el proyecto de Whisper, se hace con esta linea de código:
+
+```console
+!pip install git+https://github.com/openai/whisper.git
+```
+
+Posteriormente se debe generar otra linea instalando herramientas necesarias del sistema:
+
+```Console
+!sudo apt update && sudo apt install ffmpeg
+```
+
+Importaciones de Python
+
+```Python
+import os
+import whisper
+from whisper.utils import WriteTXT, WriteSRT, WriteVTT
+```
+
+Debe verse muy similar a esto:
+
+<Image
+  src={image2}
+  alt="Imagen de la consola de Google Colab con Python instalado"
+/>
+
+## Instalación del modelo
+
+Los modelos de Whisper de OpenAI vienen en diferentes tamaños y capacidades, adaptándose a una variedad de necesidades y recursos. Los modelos principales son Tiny, Base, Small, Medium, Large y Large-v2. Aquí está una breve descripción de cada uno:
+
+**Tiny:** Es el modelo más pequeño y rápido, diseñado para aplicaciones donde la velocidad y la eficiencia son críticas, como dispositivos con recursos limitados. Sacrifica algo de precisión en favor de un menor uso de recursos.
+
+**Base:** Ofrece un equilibrio entre rendimiento y precisión. Es adecuado para aplicaciones generales de reconocimiento de voz donde se necesita una buena precisión sin un uso intensivo de recursos.
+
+**Small:** Un modelo ligeramente más grande que Base, proporcionando una mejor precisión a cambio de un poco más de uso de recursos. Adecuado para aplicaciones que requieren un buen equilibrio entre rendimiento y precisión.
+
+**Medium:** Este modelo ofrece una mayor precisión y es adecuado para aplicaciones que pueden permitirse un mayor uso de recursos para obtener resultados más precisos.
+
+**Large:** Proporciona una de las mejores precisiones entre los modelos Whisper, pero requiere recursos computacionales significativamente mayores. Es ideal para aplicaciones donde la precisión es crítica y los recursos no son una limitación.
+
+**Large-v2(New):** Una versión mejorada del modelo Large, ofrece aún más precisión y se considera el modelo de más alto rendimiento en la línea Whisper.
+
+<Image src={image2} alt="Descripcion de cada uno de los modelos en una tabla" />
+
+En este tutorial, utilizaremos el modelo ‘Medium’. Sin embargo, eres libre de elegir el modelo que mejor se adapte a tus necesidades y requerimientos. Ten en cuenta que cuanto más grande sea el modelo, más tiempo tardará en producir resultados. La línea de código que necesitamos añadir al proyecto es la siguiente:
+
+```Python
+model = whisper.load_model("medium")
+```
+
+## Audio
+
+En la parte izquierda de la pantalla, encontrarás la opción para cargar los archivos que deseas procesar. Es importante recordar que en este entorno de trabajo, toda la información que subas será eliminada al finalizar la sesión.
+
+<Image
+  src={image4}
+  alt="Consola de Google Colab señalando las acciones que se deben hacer"
+/>
+
+<Callout>
+  Actualmente, Whisper es capaz de procesar los siguientes formatos de archivo:
+  MP3, WAV, FLAC, AAC, OGG, M4A y AIFF.
+</Callout>
+
+## Creacíon de documentos
+
+El último fragmento de código que vamos a utilizar nos ayudará a generar los archivos necesarios. En este caso, crearemos archivos en los formatos TXT, SRT y VTT, que son utilizados para la subtitulación de videos.
+
+```Python
+output_dir = "output"
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+
+# Crear instancias de las clases para escribir los resultados
+write_txt = WriteTXT(output_dir)
+write_srt = WriteSRT(output_dir)
+write_vtt = WriteVTT(output_dir)
+
+# Escribir la transcripción en un archivo TXT
+write_txt(result, "test.ogg")
+
+# Escribir los subtítulos en archivos SRT y VTT
+write_srt(result, "test.ogg")
+write_vtt(result, "test.ogg")
+```
+
+Una vez que hayas incluido este código en tu entorno de trabajo, debes ejecutarlo para que las librerías necesarias se descarguen y el proceso se complete. Para activar o ejecutar estas líneas de código, simplemente presiona el botón ‘Ejecutar celda’, visible en cada línea de código.
+
+<Image src={image5} alt="Pryecto en Google colab terminado" />
+
+<Callout>
+  Es crucial asegurarse de que todos los ‘checks’ o indicadores de verificación
+  aparezcan en verde. Esto significa que las operaciones o procesos han sido
+  exitosos y están funcionando correctamente.
+</Callout>
+
+---
+
+Whisper AI, de OpenAI, marca un hito en el reconocimiento de voz y la inteligencia artificial. Con su capacidad para entender y transcribir diversos idiomas y dialectos con precisión, facilita una mayor accesibilidad y comprensión global. Su versatilidad en múltiples industrias subraya su potencial transformador, prometiendo cambiar significativamente nuestra interacción con la tecnología y entre nosotros mismos.
+
+## Bonus
+
+Agrego mi [documento de Google Colab](https://colab.research.google.com/drive/1exuTz3mN-TYrBe-mkhtCC5xBeBo4mng0?usp=sharing)
