@@ -1,4 +1,8 @@
-# Introducing [Astro Micro 🔬](https://astro-micro.vercel.app/)
+# Parango Blog
+
+Gracias por interesarte en la parte técnica de este proyecto. Apreciaría mucho si pudieras dejar una estrella ⭐ en este repositorio, ya sea que te haya sido útil o simplemente porque sí, jejeje. ¡Saludos!
+
+## Introducing [Astro Micro 🔬](https://astro-micro.vercel.app/)
 
 Astro Micro is an accessible theme for Astro. It's a fork of [Mark Horn's](https://github.com/markhorn-dev) popular theme [Astro Nano](https://astro-nano-demo.vercel.app/). Like Nano, Micro comes with zero frameworks installed.
 

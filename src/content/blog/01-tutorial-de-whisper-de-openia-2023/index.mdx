@@ -44,13 +44,13 @@ Inicialmente se debe descargar el proyecto de Whisper, se hace con esta linea de
 
 Posteriormente se debe generar otra linea instalando herramientas necesarias del sistema:
 
-```Console
+```console
 !sudo apt update && sudo apt install ffmpeg
 ```
 
 Importaciones de Python
 
-```Python
+```python
 import os
 import whisper
 from whisper.utils import WriteTXT, WriteSRT, WriteVTT
@@ -83,7 +83,7 @@ Los modelos de Whisper de OpenAI vienen en diferentes tamaños y capacidades, ad
 
 En este tutorial, utilizaremos el modelo ‘Medium’. Sin embargo, eres libre de elegir el modelo que mejor se adapte a tus necesidades y requerimientos. Ten en cuenta que cuanto más grande sea el modelo, más tiempo tardará en producir resultados. La línea de código que necesitamos añadir al proyecto es la siguiente:
 
-```Python
+```python
 model = whisper.load_model("medium")
 ```
 
@@ -105,7 +105,7 @@ En la parte izquierda de la pantalla, encontrarás la opción para cargar los ar
 
 El último fragmento de código que vamos a utilizar nos ayudará a generar los archivos necesarios. En este caso, crearemos archivos en los formatos TXT, SRT y VTT, que son utilizados para la subtitulación de videos.
 
-```Python
+```python
 output_dir = "output"
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
