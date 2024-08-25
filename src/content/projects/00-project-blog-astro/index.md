@@ -2,7 +2,7 @@
 title: "Parango Blog"
 description: "Motivaciones yu objetivos para hacer este blog"
 date: "2024-08-24"
-demoURL: "https://blog.parango.dev"
+demoURL: "https://parango.dev"
 repoURL: "https://github.com/parangodev/blog-astro"
 ---
 
