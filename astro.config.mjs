@@ -16,7 +16,6 @@ export default defineConfig({
     pagefind(),
     partytown({
       config: {
-        config: { debug: false },
         forward: ["dataLayer.push"],
       },
     }),
