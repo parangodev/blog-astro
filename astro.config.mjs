@@ -1,10 +1,11 @@
-import tailwind from "@astrojs/tailwind";
-import { defineConfig } from "astro/config";
-
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
+import tailwind from "@astrojs/tailwind";
 import pagefind from "astro-pagefind";
+import { defineConfig } from "astro/config";
+
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,4 +26,6 @@ export default defineConfig({
       theme: "css-variables",
     },
   },
+  output: "server",
+  adapter: cloudflare(),
 });
